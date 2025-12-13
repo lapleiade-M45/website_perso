@@ -1,0 +1,78 @@
+---
+import data from "../data/fhs.json"
+import TreeNodeBase from "../components/TreeNodeBase.astro"
+import TreeNode from "../components/TreeNode.astro"
+
+---
+
+<div id="container">
+	<main>
+		<section id="hero">
+			
+			<h1>
+				<span id="cursor">▋</span> Les cordonier etant les plus mal chaussé...
+			</h1>
+			<div>
+				{
+					data.map((m) => {
+						const a = m["path"];
+						return(<TreeNodeBase path={a} />)
+					})
+				}
+			</div>
+			<div>
+				<TreeNode></TreeNode>
+
+			</div>
+		
+		</section>
+	</main>
+
+	
+</div>
+
+<style>
+	
+	#cursor {
+		display: inline-block;
+		width: 0.6em;
+		height: 1em;
+		background-color: var(--cursor-color, #00ff00);
+		margin-left: 2px;
+		animation: blink 1.2s steps(1) infinite;
+	}
+
+	@keyframes blink {
+	0%   { opacity: 1; }
+	50%  { opacity: 0; }
+	100% { opacity: 1; }
+	}
+
+	#container {
+		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		background-color: #300924;
+
+		height: 100%;
+	}
+
+	main {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	#hero {
+		display: flex;
+		color: #ffff;
+		align-items: start;
+		flex-direction: column;
+		justify-content: center;
+		padding: 16px;
+	}
+
+	h1 {
+		font-size: 22px;
+		margin-top: 0.25em;
+	}
+
+</style>
