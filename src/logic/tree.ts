@@ -1,36 +1,55 @@
 import data from "../data/fhs.json"
+import type {Tree_t, Treenode_t, TreeData} from "../type/interface"
 
-interface TreeData {
-    path:string;
-    type:string;
-    title:string;
-    description:string;
-    status:number;
-}
 
-interface Treenode
+function get_node(obj: TreeData): Treenode_t
 {
-    data: TreeData;
-    children: Map<string,Treenode>;
-    childen_count:number;
-    
-}
+    const end_point = obj.path.split("/");
+    const level = end_point.length - 1;
 
-function get_node(data: TreeData): Treenode
-{
-    const d: Treenode = {
-        data,
+    const d: Treenode_t = {
+        obj,
         children: new Map(),
-        childen_count: 0
+        childen_count: 0,
+        level:level - 1,
+        endpoint:end_point[level]
     }
     return(d)
 }
 
-export function BuildTree(data: TreeData[]) {
+function count_children(tree: Tree_t, node_level: number): number
+{
+    let children: number = 0;
 
-    for (const d of data){
-        const node: Treenode = get_node(d);
-        console.log(node)
+    for(const node of tree.tree)
+    {
+        if(node.level == node_level + 1)
+            children++;
     }
+    return(children);
+}
 
+function set_children(tree: Tree_t)
+{
+    for (const node of tree.tree)
+    {
+
+        
+
+        node.childen_count = count_children(tree, node.level);
+    }
+}
+
+export function BuildTree(data: TreeData[]): Tree_t {
+
+    const tree: Tree_t = {tree:[]};
+    
+    for (const obj of data)
+    {
+        const node = get_node(obj);
+        tree.tree.push(node);
+    }
+    tree.tree.sort((a,b) => a.level - b.level)
+    set_children(tree);
+    return(tree);
 }

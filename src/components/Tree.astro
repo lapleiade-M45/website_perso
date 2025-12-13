@@ -1,0 +1,17 @@
+---
+import type {Tree_t, Treenode_t, TreeData} from "../type/interface"
+import {BuildTree} from "../logic/tree"
+import data from "../data/fhs.json"
+import TreeNode  from "../components/TreeNode.astro"
+
+const d: Tree_t = BuildTree(data)
+---
+
+<div >
+    {d.tree.map((node) =>{
+        return(
+            <TreeNode obj={ node }></TreeNode>
+        )
+    })}
+
+</div>

@@ -1,7 +1,7 @@
 ---
 import data from "../data/fhs.json"
-import TreeNodeBase from "../components/TreeNodeBase.astro"
-import TreeNode from "../components/TreeNode.astro"
+import TreeNodeBase from "../components/Path.astro"
+import Tree from "../components/Tree.astro"
 
 ---
 
@@ -20,8 +20,8 @@ import TreeNode from "../components/TreeNode.astro"
 					})
 				}
 			</div>
-			<div>
-				<TreeNode></TreeNode>
+			<div id="Tree">
+				<Tree>
 
 			</div>
 		
@@ -73,6 +73,11 @@ import TreeNode from "../components/TreeNode.astro"
 	h1 {
 		font-size: 22px;
 		margin-top: 0.25em;
+	}
+
+	#Tree 
+	{
+		margin-top: 20px;
 	}
 
 </style>

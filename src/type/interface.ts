@@ -1,8 +1,22 @@
-export default interface Treenode
-{
+export interface TreeData {
     path:string;
-    name:string;
-    desc:string;
-    children: Map<string,Treenode>;
-    childen_count:Number;
+    type:string;
+    title:string;
+    description:string;
+    status:number;
+}
+
+export interface Treenode_t
+{
+    obj: TreeData;
+    level:number;
+    endpoint:string;
+    children: Map<string,Treenode_t>;
+    childen_count:number;
+    
+}
+
+export interface Tree_t 
+{
+    tree: Treenode_t[];
 }

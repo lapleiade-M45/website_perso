@@ -1,8 +1,30 @@
 ---
+import type {Treenode_t} from "../type/interface"
 
-import {BuildTree} from "../logic/tree"
-import data from "../data/fhs.json"
+const { obj } = Astro.props  as {obj:Treenode_t};
 
-BuildTree(data)
 ---
 
+<div id="node">
+    { !obj ?  <span> "Node props error" </span> : 
+        <div>
+            Level : {obj.level}
+        </div>
+        <div>
+            Node: {obj.endpoint} 
+        </div>
+        <div>
+            page: {obj.obj.path} 
+        </div>
+        <div>
+            children: {obj.childen_count} 
+        </div>
+    }
+</div>
+
+
+<style>
+    #node{
+        margin-top: 10px;
+    }
+</style>
