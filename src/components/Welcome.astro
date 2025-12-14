@@ -50,23 +50,28 @@ import Tree from "../components/Tree.astro"
 
 	#container {
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		position: fixed;
+		top: 9px;
+		left: 9px;
+		right: 9px;
+		bottom: 9px;
+		border: 3px solid #fff;
+		box-sizing: border-box;
 		background-color: #300924;
-
-		height: 100%;
 	}
 
 	main {
-		height: 100%;
+		height:100vh;
 		display: flex;
-		justify-content: center;
+
 	}
 
 	#hero {
 		display: flex;
 		color: #ffff;
-		align-items: start;
 		flex-direction: column;
-		justify-content: center;
+		flex: 1;
+		overflow-y: auto;
 		padding: 16px;
 	}
 
@@ -78,6 +83,7 @@ import Tree from "../components/Tree.astro"
 	#Tree 
 	{
 		margin-top: 20px;
+		margin-bottom: 20px;
 	}
 
 </style>

@@ -8,17 +8,12 @@ const { obj } = Astro.props  as {obj:Treenode_t};
 <div id="node">
     { !obj ?  <span> "Node props error" </span> : 
         <div>
-            Level : {obj.level}
+            Node: /{obj.endpoint} 
         </div>
         <div>
-            Node: {obj.endpoint} 
+            Level : {obj.level} page: {obj.obj.path}  children: {obj.childen_count} 
         </div>
-        <div>
-            page: {obj.obj.path} 
-        </div>
-        <div>
-            children: {obj.childen_count} 
-        </div>
+       
     }
 </div>
 
